@@ -36,8 +36,8 @@ B = [0, 0, 0, 0;
      0, 0, 0, 0;
      0, 0, 0, 0;
      0, 0, 0, 0;
-     (L*k*cm)/Izz, 0, (L*k*cm)/Ixx, 0;
-     0, (L*k*cm)/Iyy, 0, (L*k*cm)/Iyy;
+     (L*k*cm)/Izz, 0, -(L*k*cm)/Ixx, 0;
+     0, (L*k*cm)/Iyy, 0, -(L*k*cm)/Iyy;
      (b*cm)/Izz,-(b*cm)/Izz,(b*cm)/Izz,-(b*cm)/Izz];
 
 C = [1,0,0,0,0,0,0,0,0,0,0,0;
