@@ -8,7 +8,7 @@ D = sysd.D;
 
 %% stability
 eigenvalues =eig(A); 
-stable = sum(abs(eig(A)) > 1) > 0;
+%stable = sum(abs(eig(A)) > 1) == 0;
 
 %% observability
 OO=obsv(A,C);
