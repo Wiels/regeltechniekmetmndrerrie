@@ -1,7 +1,11 @@
 %% Set parameters
-theta_d = pi/100;
-init_theta = pi/50;
-init_x = -0.1;
+theta_d = pi/200;
+init_theta = pi/150;
+init_x = 0;
+%filter settings
+f = 2;
+wc = 2*f*pi;
+Ts = 0.1;
 
 %% Open Simulink library
 slLibraryBrowser

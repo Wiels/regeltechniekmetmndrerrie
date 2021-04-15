@@ -2,7 +2,6 @@
 % Tuning of Q and R happens here
 function K = lqr_controller(sys)
     Q = diag([1000,4000,0,0]);
-    %R=10;
-    R=100;
+    R = 10;
     K = lqr(sys,Q,R);
 end
