@@ -1,7 +1,8 @@
 function sys = get_system(params)
 
-a31 = -Mc*Dt*g/Jsw;
-a32 = -(g*Mc*Rm*r^2*Jsw+Mc*Dt*Rm*r^2*g*Msw*Dc)/(Rm*r^2*Jsw*Mc);
+a31 = -params.Mc*params.Dt*params.g/params.Jsw;
+a32 = -(params.g*params.Mc*params.Rm*params.r^2*params.Jsw+params.Mc...
+    *Dt*Rm*r^2*g*Msw*Dc)/(Rm*r^2*Jsw*Mc);
 a33 = (-Jsw*eta_g*Kg^2*eta_m*Kt*Km-Jsw*Beq*Rm*r^2-Mc*Dt^2*eta_g*Kg^2*eta_m*Kt*Km-Mc*Dt^2*Beq*Rm*r^2)/(Rm*r^2*Jsw*Mc);
 a34 = -(Dt*Bsw)/Jsw;
 a41 = -(g*Mc)/Jsw;
