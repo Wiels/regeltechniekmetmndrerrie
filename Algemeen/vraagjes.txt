@@ -1,0 +1,5 @@
+
+Al goed onze gwne controller? (met setpoint enzo)
+Wa checken qua Q en R?
+
+Filter en bwdiff en beetje inde war met ZOH en sampling/continuous
