@@ -5,7 +5,7 @@ init_x = 0;
 %filter settings
 f = 2;
 wc = 2*f*pi;
-Ts = 0.1;
+Ts = 1/200;
 
 %% Open Simulink library
 slLibraryBrowser
