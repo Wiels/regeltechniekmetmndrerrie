@@ -1,5 +1,5 @@
 clear;
-load 'discrete_linearized.mat';
+load 'discrete_linearized_tustin.mat';
 
 A = sysd.A;
 B = sysd.B;
@@ -14,25 +14,25 @@ eigenvalues =eig(A);
 OO=obsv(A,C);
 observable = rank(OO) == length(A);
 [V,d]=eig(A);
-Po = C*V; %colum 10 is zero => eigvalue 10 is unobservable
+Po = C*V; %all are observable
 
 %% controllabilty
 Cont = ctrb(A, B)
 controllable = length(A) == rank(Cont)
 [V, d] = eig(A');
-Pc = B'*V; %colum 5,6,7 equal zero => eigenvalue 5,6,7 uncontrollable
+Pc = B'*V; %all are controllable
 
 %% stabilizable
-% not stabilizable as eigenvalue 5,6,7 are unstable and uncontrollable
+% stabilizable
 
 %% detectable
-% not detectable as eigenvalue 10 is unstable and unobservable
+% detectable
 
 %% minimal realization
 sysmin = minreal(sysd);
 
 [Am,Bm,Cm,Dm] = ssdata(sysmin);
-
+%system is minimal
 %% Transmission zeros
 zz = tzero(A,B,C,D)
 
