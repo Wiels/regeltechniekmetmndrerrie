@@ -34,4 +34,16 @@ sysmin = minreal(sysd);
 [Am,Bm,Cm,Dm] = ssdata(sysmin);
 
 %% Transmission zeros
-%TODO
+zz = tzero(A,B,C,D)
+
+for i = 1:size(zz,1)
+    transmissions = zeros(size(zz,1),1);
+    zeta=zz(1); % choose one of the transmission zeros
+    M=[zeta*eye(length(A))-A, -B; C, D];
+    if rank(M) < size(M,1)
+        transmissions(i) = 1;
+    end
+    %z=null(M);
+    %x0=z(1:length(A),1);
+    %u0=z(length(A)+1:length(z),1);
+end

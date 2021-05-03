@@ -7,8 +7,7 @@ f = 2;
 wc = 2*f*pi;
 Ts = 1/200;
 
-%% Open Simulink library
-slLibraryBrowser
+
 %% Setup
 params = get_params();
 sys = get_system(params);
