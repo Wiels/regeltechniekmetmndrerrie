@@ -1,0 +1,42 @@
+
+
+%% Controller
+damping=0.8;
+tsettle=5;
+omega=4.6/(damping*tsettle);
+dompoles=[-damping*omega+1i*omega*sqrt(1-damping^2),...
+    -damping*omega-1i*omega*sqrt(1-damping^2)];
+
+
+otherpoles=ones(1,4)*-10;
+evenotherpoles=ones(1,4)*-12;
+
+p = [dompoles,otherpoles,evenotherpoles,-16,-16];
+pd = e.^(p*0.05);
+Kpp = place(sys.A,sys.B,p);
+eig(sys.A-sys.B*Kpp);
+
+%% Observer
+Lpp = place(sys.A',sys.C',eig(sys.A-sys.B*Kpp)*2.5)';
+
+%% discretize
+
+
+%%
+App = sysd.A-sysd.B*Kpp-Lpp*sysd.C;
+Bpp = Lpp;
+Cpp = -Kpp;
+Dpp = zeros(4,6);
+syscomp=ss(App,Bpp,Cpp,Dpp,0.05);
+
+
+
+%% other way
+% mySeed = 10;
+% rng(mySeed);
+
+% G = randn(4,12);
+% Lambda1 = blkdiag([-3 +1; -1 -3],otherpoles);
+% X1 = lyap(sys.A,-Lambda1,-sys.B*G);
+% K1 = G/X1;
+
