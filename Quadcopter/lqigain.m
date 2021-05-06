@@ -1,3 +1,4 @@
+clear;
 load('references_08.mat')
 load 'discrete_linearized_tustin.mat';
 %% full system (dlqr not usable)
