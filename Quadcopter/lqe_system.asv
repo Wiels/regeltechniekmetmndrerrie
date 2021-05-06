@@ -17,8 +17,8 @@ Qoy = 1;
 Qoz= 1;
 Q = diag([Qx,Qy,Qz,Qvx,Qvy,Qvz,Qphi,Qtheta,Qpsi,Qox,Qoy,Qoz]);
 varxyz = 2.5*10e-5;
-varangles=7.57*10e-5;
-R = diag([varxyz*ones(1,3),varangles*ones(1,3)]);
+varangle
+R = 1*eye(6);
 Qb=B1*Q*B1';
 Lt = dlqr(sysd.A',sysd.C',Qb,R);
 L = Lt';
