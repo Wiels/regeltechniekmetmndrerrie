@@ -4,25 +4,27 @@ load 'discrete_linearized_tustin.mat';
 
 %% Controller
 damping=0.8;
-tsettle=20;
+tsettle=12;
 omega=4.6/(damping*tsettle);
 dompoles=[-damping*omega+1i*omega*sqrt(1-damping^2),...
     -damping*omega-1i*omega*sqrt(1-damping^2)];
 
+otherpoles=linspace(5,10,10)*-abs(dompoles(1));
+%otherpoles=linspace(5,10,10)*-damping*omega;
+% otherpoles=ones(1,2)*-6+0.1i;
+% evenotherpoles=ones(1,2)*-6-0.1i;
+% morepoles=ones(1,2)*-8+0.15i;
+% extrapoles=ones(1,2)*-8-0.15i;
 
-otherpoles=ones(1,2)*-6+0.1i;
-evenotherpoles=ones(1,2)*-6-0.1i;
-morepoles=ones(1,2)*-8+0.15i;
-extrapoles=ones(1,2)*-8-0.15i;
-
-p = [dompoles,otherpoles,evenotherpoles,morepoles,extrapoles,-10.0,-11.0];
+p = [dompoles,otherpoles];
 pd = exp(p.*0.05);
 Kpp = place(sysd.A,sysd.B,pd);
-eig(sysd.A-sysd.B*Kpp)
+eig(sysd.A-sysd.B*Kpp);
 
 %% Observer
-
-Lpp = place(sysd.A',sysd.C',eig(sysd.A-sysd.B*Kpp)/5.5)';
+obspoles=p*6;
+obspolesd=exp(obspoles*0.05);
+Lpp = place(sysd.A',sysd.C',obspolesd)';
 
 
 
@@ -32,7 +34,7 @@ Bpp = Lpp;
 Cpp = -Kpp;
 Dpp = zeros(4,6);
 syscomp=ss(App,Bpp,Cpp,Dpp,0.05);
-eig(App)
+eig(App);
 isstable(syscomp)
 
 %% other way
