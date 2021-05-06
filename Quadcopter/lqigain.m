@@ -1,3 +1,4 @@
+clear;
 load('references_08.mat')
 load 'sysaug.mat';
 %% 
