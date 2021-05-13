@@ -19,10 +19,10 @@ otherpoles=linspace(5,10,10)*-abs(dompoles(1));
 p = [dompoles,otherpoles];
 pd = exp(p.*0.05);
 Kpp = place(sysd.A,sysd.B,pd);
-eig(sysd.A-sysd.B*Kpp);
+eig(sysd.A-sysd.B*Kpp)
 
 %% Observer
-obspoles=p*6;
+obspoles=p*3;
 obspolesd=exp(obspoles*0.05);
 Lpp = place(sysd.A',sysd.C',obspolesd)';
 
