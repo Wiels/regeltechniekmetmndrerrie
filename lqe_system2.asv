@@ -16,7 +16,7 @@ Qy = 100;
 Qz = 100;
 Qvx = 1;
 Qvy = 1;
-Qvz = 100;
+Qvz = 1;
 others = ones(1,6);
 Q = diag([Qxi,Qyi,Qzi,Qx,Qy,Qz,Qvx,Qvy,Qvz,others]);
 R = 10*eye(4);
@@ -26,7 +26,7 @@ Ks = Kfull(:,4:15);
 %%
 B1=eye(12);
 
-sigmasquared = 0.1;
+sigmasquared = 0.01;
 % Qx = 100;
 % Qy = 100;
 % Qz = 1000;
