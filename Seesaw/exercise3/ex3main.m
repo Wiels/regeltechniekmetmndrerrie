@@ -1,5 +1,8 @@
 %% Set parameters
 clear;
+% 16 bits quantisation, -10 to 10 V
+quantisation_step=20/(2^16);
+
 %desired angle
 theta_d = 0;
 
@@ -13,8 +16,8 @@ wc = 2*f*pi;
 Ts = 1/200;
 
 %% Setup
-  Q = diag([1000,4000,100,1]);
-  R = 1e5;
+  Q = diag([1,1,0,0]);
+  R = 1e12;
     
 dist = [0;-pi/(180/50);0;0];
 %dist = [0;0;0;0];
