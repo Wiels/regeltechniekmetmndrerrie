@@ -23,6 +23,7 @@ load 'sysaug.mat';
 % Kfull = dlqr(sysaug.A,sysaug.B,Q,R);
 % Ki = Kfull(:,1:3);
 % Ks = Kfull(:,4:15);
+
 % official lqi tuned params jwz
 Qxi = 1;
 Qyi = 1;
@@ -32,17 +33,34 @@ Qy = 1000;
 Qz = 100;
 Qvx = 1000;
 Qvy = 1000;
-Qvz = 10000;
+Qvz = 100000;
 others = ones(1,6);
 Q = diag([Qxi,Qyi,Qzi,Qx,Qy,Qz,Qvx,Qvy,Qvz,others]);
 R = 0.01*eye(4);
 Kfull = dlqr(sysaug.A,sysaug.B,Q,R);
 Ki = Kfull(:,1:3);
 Ks = Kfull(:,4:15);
+
+%crazy tune to get all checkpoints
+% Qxi = 10;
+% Qyi = 10;
+% Qzi = 100;
+% Qx = 1000;
+% Qy = 1000;
+% Qz = 1000;
+% Qvx = 1000;
+% Qvy = 100;
+% Qvz = 1000;
+% others = ones(1,6);
+% Q = diag([Qxi,Qyi,Qzi,Qx,Qy,Qz,Qvx,Qvy,Qvz,others]);
+% R = 1*eye(4);
+% Kfull = dlqr(sysaug.A,sysaug.B,Q,R);
+% Ki = Kfull(:,1:3);
+% Ks = Kfull(:,4:15);
 %%
 B1=eye(12);
 
-sigmasquared = 0.1;
+sigmasquared = 0.0001;
 % Qx = 100;
 % Qy = 100;
 % Qz = 1000;
