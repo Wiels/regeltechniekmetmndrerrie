@@ -2,16 +2,18 @@
 load('references_08.mat')
 load 'discrete_linearized_tustin.mat';
 %good values: 0.8/12/9,19/10
+%official tuning for pp
 %% Controller
-damping=0.71;
-tsettle=8;
+damping=1;
+tsettle=7;
 omega=4.6/(damping*tsettle);
 a = -damping*omega;
 b = omega*sqrt(1-damping^2);
-dompoles=[-a+1i*b,...
-    -a-1i*b];
+dompoles=[a+1i*b,...
+    a-1i*b];
 
-otherpoles=linspace(5,10,10)*a;
+%otherpoles=linspace(8,12,10)*(-abs(dompoles(1)));
+otherpoles=linspace(5,9,10)*(-abs(dompoles(1)));
 
 cl_poles = [dompoles,otherpoles];
 cl_poles_d = exp(cl_poles.*0.05);
@@ -19,9 +21,10 @@ Kpp = place(sysd.A,sysd.B,cl_poles_d);
 eig(sysd.A-sysd.B*Kpp)
 
 %% Observer
-obspoles=cl_poles*5;
+obspoles=cl_poles*2;
 obspolesd=exp(obspoles*0.05);
 Lpp = place(sysd.A',sysd.C',obspolesd)';
+
 
 
 %%
@@ -47,4 +50,65 @@ Nu = N(13:end,:);
 % Lambda1 = blkdiag([-3 +1; -1 -3],otherpoles);
 % X1 = lyap(sys.A,-Lambda1,-sys.B*G);
 % K1 = G/X1;
+
+% official tuning for pp
+% %% Controller
+% damping=1;
+% tsettle=7;
+% omega=4.6/(damping*tsettle);
+% a = -damping*omega;
+% b = omega*sqrt(1-damping^2);
+% dompoles=[a+1i*b,...
+%     a-1i*b];
+% 
+% %otherpoles=linspace(8,12,10)*(-abs(dompoles(1)));
+% otherpoles=linspace(5,9,10)*(-abs(dompoles(1)));
+% 
+% cl_poles = [dompoles,otherpoles];
+% cl_poles_d = exp(cl_poles.*0.05);
+% Kpp = place(sysd.A,sysd.B,cl_poles_d);
+% eig(sysd.A-sysd.B*Kpp)
+% 
+% %% Observer
+% obspoles=cl_poles*2;
+% obspolesd=exp(obspoles*0.05);
+% Lpp = place(sysd.A',sysd.C',obspolesd)';
+
+%% plotting of poles
+figure
+hold on
+scatter(real(cl_poles),imag(cl_poles),'MarkerEdgeColor',[0 .5 .5],...
+              'MarkerFaceColor',[0 .7 .7],...
+              'LineWidth',1.5);
+scatter(real(obspoles),imag(obspoles),'MarkerEdgeColor',[0.5 0 .5],...
+              'MarkerFaceColor',[0.7 0 .7],...
+              'LineWidth',1.5);
+grid on
+  
+hold off
+
+%% plotting of poles discrete
+figure
+hold on
+syms t;
+t=0:0.001:2*pi;
+x=cos(t);
+y=sin(t);
+plot(x,y,'k','linewidth',2);
+axis square;
+scatter(real(cl_poles_d),imag(cl_poles_d),'MarkerEdgeColor',[0 .5 .5],...
+              'MarkerFaceColor',[0 .7 .7],...
+              'LineWidth',1.5);
+scatter(real(obspolesd),imag(obspolesd),'MarkerEdgeColor',[0.5 0 .5],...
+              'MarkerFaceColor',[0.7 0 .7],...
+              'LineWidth',1.5);
+grid on
+  
+hold off
+
+
+
+
+
+
 
