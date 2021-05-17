@@ -1,4 +1,5 @@
-function sys = get_system2(params)
+%ex3
+function sys = get_system(params)
 
 a31 = -params.Mc*params.Dt*params.g/params.Jsw;
 a32 = -(params.g*params.Mc*params.Rm*params.r^2*params.Jsw+params.Mc...
@@ -28,6 +29,7 @@ A = [0,0,1,0;
     a31, a32, a33, a34;
     a41, a42, a43, a44];
 B = [0;0;b3;b4];
+%B=[B,dist];
 
 C =[1,0,0,0;0,1,0,0];
 D = zeros(2,1);
