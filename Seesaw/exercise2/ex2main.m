@@ -1,5 +1,5 @@
 %% Set parameters
-
+clear;
 %desired angle
 theta_d = 0;
 
@@ -18,3 +18,4 @@ sys = get_fullstate_system(params);
 x_d = desired_state(theta_d, params)
 initial_conditions = [init_x, init_theta, 0, 0];
 K = lqr_controller(sys);
+disturbance = [0.05,0,0,0];
