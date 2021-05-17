@@ -1,4 +1,4 @@
-function sys = get_system(params)
+function sys = get_system2(params)
 
 a31 = -params.Mc*params.Dt*params.g/params.Jsw;
 a32 = -(params.g*params.Mc*params.Rm*params.r^2*params.Jsw+params.Mc...
@@ -33,3 +33,4 @@ C =eye(4);
 D = zeros(4,1);
 sys = ss(A,B,C,D);
 end
+

@@ -1,4 +1,11 @@
 %openloop analysis
+clear;
+params = get_params();
+sys = get_system(params);
+A = sys.A;
+B = sys.B;
+C = sys.C;
+D = sys.D;
 
 %% stability
 eigenvalues =eig(A); 
@@ -10,7 +17,7 @@ observable = rank(OO) == length(A);
 [V,d]=eig(A);
 Po = C*V; %system observable
 
-%% controllabilty
+%% controllability
 Cont = ctrb(A, B)
 controllable = length(A) == rank(Cont)
 [V, d] = eig(A');
@@ -30,7 +37,6 @@ sysmin = minreal(sys);
 %system is minimal
 
 %% Transmission zeros
-D = [0 ;0];
 zz = tzero(A,B,C,D)
 %there are no transmission zeros
 if size(zz,1) > 0

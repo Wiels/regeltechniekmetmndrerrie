@@ -76,8 +76,9 @@ syscomp2=ss(Ac2,Bc2,Cc2,Dc2,0.05);
 %% poles, seems stable?
 abs(union(eig(sysd.A-sysd.B*Ks), eig(sysd.A-L*sysd.C)));
 
+%% transfer function of sysd
 
-
+sys = zpk(sysd);
 
 
 

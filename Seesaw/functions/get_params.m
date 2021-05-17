@@ -15,7 +15,4 @@ params.r = 0.00635; % m radius of output gear
 params.g = 9.81; % m/s^2 acceleration of gravity
 params.Beq = 0.9; % Nms/rad equivalent viscous damping coefficient seen at motor pinion
 params.Bsw = 0; % Nms/rad viscous damping coefficient seen from seesaw pivot
-
-
-
 end

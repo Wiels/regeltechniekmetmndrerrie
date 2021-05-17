@@ -11,12 +11,14 @@ A = sysd.A;
 B = sysd.B;
 C = sysd.C;
 D = sysd.D;
-% Qx = 100;
-% Qy = 100;
-% Qz = 1000;
-% Qvx = 100;
-% Qvy = 100;
-% Qvz = 1000;
+
+%% tuned parameters
+% Qx = 1;
+% Qy = 1;
+% Qz = 100;
+% Qvx = 1;
+% Qvy = 1;
+% Qvz = 100;
 % Qphi = 1;
 % Qtheta = 1;
 % Qpsi = 1;
@@ -24,7 +26,7 @@ D = sysd.D;
 % Qoy = 1;
 % Qoz= 1;
 % Q = diag([Qx,Qy,Qz,Qvx,Qvy,Qvz,Qphi,Qtheta,Qpsi,Qox,Qoy,Qoz]);
-% R = 1*eye(4);
+% R = 0.04*eye(4);
 
 Qx = 1;
 Qy = 1;
