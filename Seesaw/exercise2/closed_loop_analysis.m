@@ -1,4 +1,4 @@
-cl_sys = feedback(sys,K);
+cl_sys = feedback(sys,1);
 figure;
 pzmap(cl_sys);
 figure;
