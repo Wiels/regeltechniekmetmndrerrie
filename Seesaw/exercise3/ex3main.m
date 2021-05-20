@@ -26,7 +26,7 @@ stepValue=[0,stepTheta,0,0];
 f = 3;
 wc = 2*f*pi;
 Ts = 1/200;
-load('D:\Users\Gebruiker\Documents\Universiteit\2020-2021\Tweede semester\Rrrrrrrrrrrrrrrrrrrrrrrrrrrrrregeltechniek\git\regeltechniekmetmndrerrie\Seesaw\exercise3\ref02.mat')
+load('ref02.mat')
 
 %% Setup
 %best:
