@@ -24,7 +24,7 @@ load 'sysaug.mat';
 % Ki = Kfull(:,1:3);
 % Ks = Kfull(:,4:15);
 
-% official lqi tuned params jwz
+% official lqi tuned params
 Qxi = 1;
 Qyi = 1;
 Qzi = 100;

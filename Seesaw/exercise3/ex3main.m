@@ -23,10 +23,10 @@ stepTheta=pi/(180/stepThetaDegrees);
 stepValue=[0,stepTheta,0,0];
 
 %filter settings
-f = 3;
+f = 5;
 wc = 2*f*pi;
 Ts = 1/200;
-load('ref02.mat')
+load('extreme.mat')
 
 %% Setup
 %best:
