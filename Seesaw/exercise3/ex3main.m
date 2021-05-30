@@ -26,6 +26,8 @@ stepValue=[0,stepTheta,0,0];
 f = 5;
 wc = 2*f*pi;
 Ts = 1/200;
+load('extreme.mat')
+
 load('ref02.mat')
 factor1=(wc*Ts)/(1+wc*Ts);
 factor2=1/(1+wc*Ts);
