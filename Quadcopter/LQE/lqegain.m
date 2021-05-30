@@ -1,9 +1,10 @@
+% All calculations to get the LQE controller running in Simulink
 %%
 clear
 load('references_08.mat')
 load 'discrete_linearized_tustin.mat';
 load 'sysaug.mat';
-%% 
+%% Tuning 
 % A = sysaug.A;
 % B = sysaug.B;
 % C = sysaug.C;
@@ -24,7 +25,7 @@ load 'sysaug.mat';
 % Ki = Kfull(:,1:3);
 % Ks = Kfull(:,4:15);
 
-% official lqi tuned params jwz
+% official lqi tuned params
 Qxi = 1;
 Qyi = 1;
 Qzi = 100;
@@ -91,7 +92,7 @@ syscomp2=ss(Ac2,Bc2,Cc2,Dc2,0.05);
 % L2 = sysd.A*M;
 
 
-%% poles, seems stable?
+%% poles
 abs(union(eig(sysd.A-sysd.B*Ks), eig(sysd.A-L*sysd.C)));
 
 %% transfer function of sysd

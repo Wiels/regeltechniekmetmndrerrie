@@ -1,3 +1,4 @@
+% All calculations to get the LQR controller running in Simulink
 clear;
 load('references_08.mat')
 load 'discrete_linearized_tustin.mat';

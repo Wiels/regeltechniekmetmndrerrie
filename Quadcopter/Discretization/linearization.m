@@ -1,3 +1,4 @@
+%Implementation of the linear model as well as discretizing it
 clear;
 load references_08;
 

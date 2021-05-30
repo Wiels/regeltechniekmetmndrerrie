@@ -1,3 +1,4 @@
+% Implementation of augmented system, necessary to include integral action
 clear;
 load('references_08.mat')
 load 'sys.mat';

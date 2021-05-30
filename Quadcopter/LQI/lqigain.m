@@ -1,7 +1,8 @@
+% All calculations to get the LQI controller running in Simulink
 clear;
 load('references_08.mat')
 load 'sysaug.mat';
-%% 
+%% Tuning
 % A = sysaug.A;
 % B = sysaug.B;
 % C = sysaug.C;
@@ -35,7 +36,7 @@ load 'sysaug.mat';
 % Ki = Kfull(:,1:3);
 % Ks = Kfull(:,4:15);
 
-% official tuned parameters jwz
+% official tuned parameters
 Qxi = 1;
 Qyi = 1;
 Qzi = 100;
